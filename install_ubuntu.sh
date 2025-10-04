@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# script para automatizar a pós instalação do popOS 22
+# script para automatizar a pós instalação do Ubuntu 24.04 (LTS) com Gnome.
 
 set -e  # exit on error
 
@@ -10,7 +10,7 @@ echo '========== Iniciando Pós-Intalação =========='
 
 # apps para instalar
 apt_apps=(
-    gnome-software
+    gnome-software gnome-shell-extension-manager gnome-tweaks
     flatpak gnome-software-plugin-flatpak
     steam-installer
     nvidia-driver-libs:i386 # steam precisa de drivers 32-bits para funcionar
