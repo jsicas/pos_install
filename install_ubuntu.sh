@@ -24,6 +24,7 @@ flat_apps=(
 # extensões para desabilitar
 gnome_extension_disable=(
     ding@rastersoft.com     # retira icones do Desktop
+    ubuntu-dock@ubuntu.com  # Retira doc do Ubuntu 24
 )
 
 
