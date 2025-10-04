@@ -14,6 +14,7 @@ apt_apps=(
     flatpak gnome-software-plugin-flatpak
     steam-installer
     nvidia-driver-libs:i386 # steam precisa de drivers 32-bits para funcionar
+    fonts-firacode  # precisa do repo universe (do ubuntu) para funcionar
 )
 
 flat_apps=(
