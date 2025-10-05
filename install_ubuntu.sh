@@ -17,8 +17,14 @@ apt_apps=(
     fonts-firacode  # precisa do repo universe (do ubuntu) para funcionar
     git
     steam-installer
+
     # steam precisa de pacotes 32-bits. Precisa atualizar a versão com base na placa, usar `nvidia-smi` para descobrir
     libnvidia-gl-580:i386 libnvidia-compute-580:i386 libnvidia-extra-580:i386
+    
+    # pacotes necessários no Ubuntu para instalar pacotes no R
+    ### tidyverse
+    libcurl4-openssl-dev libfontconfig1-dev libxml2-dev libharfbuzz-dev libfribidi-dev
+    libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev libwebp-dev
 )
 
 flat_apps=(
