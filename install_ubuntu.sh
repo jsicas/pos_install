@@ -12,9 +12,13 @@ echo '========== Iniciando Pós-Intalação =========='
 apt_apps=(
     gnome-software gnome-shell-extension-manager gnome-tweaks
     flatpak gnome-software-plugin-flatpak
-    steam-installer
-    nvidia-driver-libs:i386 # steam precisa de drivers 32-bits para funcionar
+    libnvidia-gl-580:i386 # steam precisa. Precisa atualizar a versão com base na placa, usar `nvidia-smi`
+    libnvidia-compute-580:i386 libnvidia-extra-580:i386
     fonts-firacode  # precisa do repo universe (do ubuntu) para funcionar
+    git
+    steam-installer
+    # steam precisa de pacotes 32-bits. Precisa atualizar a versão com base na placa, usar `nvidia-smi` para descobrir
+    libnvidia-gl-580:i386 libnvidia-compute-580:i386 libnvidia-extra-580:i386
 )
 
 flat_apps=(
@@ -60,8 +64,6 @@ sudo apt install -yqq ./rstudio.deb
 
 
 # baixando fontes ===================
-# Fira Code
-
 # JetBrains Mono
 
 
@@ -76,6 +78,12 @@ echo 'Configurando extensões...'
 for extension in ${gnome_extension_disable[@]}; do
     gnome-extensions disable "$extension"
 done
+
+
+# baixando e aplicando dotfiles ---------------------------
+echo 'baixando configurações (dotfiles)'
+git clone https://github.com/jsicas/dotfiles.git ~/.dotfiles
+bash ~/.dotfiles/mk_config.sh
 
 
 echo 'Fim da Pós-Instalação.'
