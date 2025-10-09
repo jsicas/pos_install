@@ -10,7 +10,7 @@ cd $(mktemp -d)  # vai para um diretório temporário
 
 # atualizando apps e repositórios
 sudo dnf upgrade
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo  # habilita flatpak (se preciso)
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo  # habilita flatpak (se preciso)
 
 
 # instalações ---------------------------------------------
@@ -39,9 +39,8 @@ flatpak install -y flathub ${flat_install[@]}
 # instalações manuais ================
 # Rstudio (Fedora 41)
 echo 'Instalando Rstudio...'
-if 
-wget -O rstudio.deb https://download1.rstudio.org/electron/rhel9/x86_64/rstudio-2025.09.1-401-x86_64.rpm
-sudo dnf install  ./rstudio.deb
+wget -O rstudio.rpm https://download1.rstudio.org/electron/rhel9/x86_64/rstudio-2025.09.1-401-x86_64.rpm
+sudo dnf install -y ./rstudio.rpm
 
 
 # baixando e aplicando dotfiles ---------------------------
