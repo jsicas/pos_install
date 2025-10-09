@@ -29,10 +29,9 @@ dnf_install=(
 flat_install=(
 	com.discordapp.Discord
 	com.valvesoftware.Steam
-
 )
 
-# instalando aplicativos
+echo 'instalando aplicativos...'
 sudo dnf install -yq ${dnf_install[@]}
 flatpak install -y flathub ${flat_install[@]}
 
