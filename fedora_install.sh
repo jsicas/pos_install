@@ -20,6 +20,7 @@ dnf_install=(
 	gnome-tweaks
     R
 	htop btop fastfetch # utilitário de sistema
+    fira-code-fonts     # fontes
 
 	# RPM Fusion Freen e Nonfree
 	https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm        # Free
