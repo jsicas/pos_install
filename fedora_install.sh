@@ -16,20 +16,21 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 # instalações ---------------------------------------------
 # dnf e flatpak =====================
 dnf_install=(
-	# gerais
-	gnome-tweaks
-    R
-	htop btop fastfetch # utilitário de sistema
-    fira-code-fonts     # fontes
-
 	# RPM Fusion Freen e Nonfree
 	https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm        # Free
 	https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm  # Nonfree
+	
+	# gerais
+    gnome-tweaks
+    R
+	htop btop fastfetch # utilitário de sistema
+    fira-code-fonts     # fontes
 )
 
 flat_install=(
 	com.discordapp.Discord
-	com.valvesoftware.Steam
+    com.valvesoftware.Steam
+    com.mattjakeman.ExtensionManager
 )
 
 echo 'instalando aplicativos...'
@@ -44,7 +45,14 @@ wget -O rstudio.rpm https://download1.rstudio.org/electron/rhel9/x86_64/rstudio-
 sudo dnf install -y ./rstudio.rpm
 
 
-# baixando e aplicando dotfiles ---------------------------
+# configurações do DE -------------------------------------
+gsettings set org.gnome.desktop.interface clock-format '24h'
+
+
+# dotfiles ------------------------------------------------
 echo 'Baixando configurações (dotfiles)...'
 git clone https://github.com/jsicas/dotfiles.git ~/.dotfiles
 bash ~/.dotfiles/mk_config.sh
+
+# finalizar instalando as extensões
+# dash to panel, search light
