@@ -26,9 +26,13 @@ dnf_install=(
 	
 	# gerais
     gnome-tweaks
-    code R
+    code
 	htop btop fastfetch # utilitário de sistema
     fira-code-fonts     # fontes
+    
+    # R e pacotes 
+    R libcurl-devel openssl-devel libxml2-devel fontconfig-devel harfbuzz-devel fribidi-devel
+    freetype-devel libpng-devel libtiff-devel libjpeg-devel libwebp-devel 
 )
 
 flat_install=(
