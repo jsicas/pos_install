@@ -33,6 +33,7 @@ dnf_install=(
     # R e pacotes 
     R libcurl-devel openssl-devel libxml2-devel fontconfig-devel harfbuzz-devel fribidi-devel
     freetype-devel libpng-devel libtiff-devel libjpeg-devel libwebp-devel v8-devel
+    udunits2-devel
 )
 
 flat_install=(
