@@ -61,7 +61,7 @@ wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 zcat < install-tl-unx.tar.gz | tar xf -
 cd install-tl-2*
 sudo perl ./install-tl -profile texlive.profile
-
+# ao final da instalação é necessário colocar no PATH, como já está nos meus dotfiles, essa etapa será pulada.
 
 # configurações do DE =====================================
 gsettings set org.gnome.desktop.interface clock-format '24h'
