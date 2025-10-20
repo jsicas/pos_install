@@ -63,8 +63,14 @@ cd install-tl-2*
 sudo perl ./install-tl -profile texlive.profile
 # ao final da instalação é necessário colocar no PATH, como já está nos meus dotfiles, essa etapa será pulada.
 
+
 # configurações do DE =====================================
 gsettings set org.gnome.desktop.interface clock-format '24h'
+gsettings set org.gnome.desktop.session idle-delay 600  # tempo para desligamento de tela por inatividade
+
+# desativando funções de suspender
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'       # usando o carregador
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'  # na bateria
 
 # atalho <super> + t para abrir terminal
 # deve-se verificar antes quais atalhos já estão definidos, como não havia nenhum, foi utilizado custom0.
