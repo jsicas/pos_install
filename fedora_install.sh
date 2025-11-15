@@ -60,11 +60,11 @@ echo 'Instalando TeX Live...'
 wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 zcat < install-tl-unx.tar.gz | tar xf -
 cd install-tl-2*
-sudo perl ./install-tl -profile texlive.profile
+perl ./install-tl -profile ../texlive.profile
 # Após a instalação é necessário colocar o TeX Live no PATH, no geral isso envolve colocar as seguintes linhas no .profile (parece estar caindo em desuso) ou no .bash_profile:
-#export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
-#export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
-#export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
+#export PATH="$HOME/.texlive/2025/bin/x86_64-linux:$PATH"
+#export MANPATH="$HOME/.texlive/2025/texmf-dist/doc/man:$MANPATH"
+#export INFOPATH="$HOME/.texlive/2025/texmf-dist/doc/info:$INFOPATH"
 # No meu caso, como já estão nos meus dotfiles, essa etapa será pulada.
 
 

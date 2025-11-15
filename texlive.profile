@@ -1,13 +1,13 @@
-# texlive.profile written on Sat Oct 18 22:10:24 2025 UTC
+# texlive.profile written on Sat Nov 15 23:24:28 2025 UTC
 # It will NOT be updated and reflects only the
 # installation profile at installation time.
-selected_scheme scheme-custom
-TEXDIR /usr/local/texlive/2025
+selected_scheme scheme-minimal
+TEXDIR /home/jv/.texlive/2025
 TEXMFCONFIG ~/.texlive2025/texmf-config
 TEXMFHOME ~/texmf
-TEXMFLOCAL /usr/local/texlive/texmf-local
-TEXMFSYSCONFIG /usr/local/texlive/2025/texmf-config
-TEXMFSYSVAR /usr/local/texlive/2025/texmf-var
+TEXMFLOCAL /home/jv/.texlive/texmf-local
+TEXMFSYSCONFIG /home/jv/.texlive/2025/texmf-config
+TEXMFSYSVAR /home/jv/.texlive/2025/texmf-var
 TEXMFVAR ~/.texlive2025/texmf-var
 binary_x86_64-linux 1
 collection-basic 1
