@@ -91,4 +91,5 @@ bash ~/.dotfiles/mk_config.sh
 # - dash to panel: configurações da barra de tarefas;
 # - search light: laucher de apps;
 # - AppIndicator and KStatusNotifierItem Support: habilita suporte à indicadores na barra de tarefas;
+# - Disable unredirect fullscreen windows: resolve problema de tearing em janelas que utilizam aceleração de hardware
 # - Steal my focus window: ao invés de aparecer uma notificação, simplesmente já abre a janela, sem precisar ter que selecionar o popup. 
