@@ -56,12 +56,16 @@ sudo dnf install -y ./rstudio.rpm
 # TeX Live
 echo 'Removendo TeX Live padrão...'
 sudo dnf remove -y texlive*
-echo 'Instalando TeXlive...'
+echo 'Instalando TeX Live...'
 wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 zcat < install-tl-unx.tar.gz | tar xf -
 cd install-tl-2*
 sudo perl ./install-tl -profile texlive.profile
-# ao final da instalação é necessário colocar no PATH, como já está nos meus dotfiles, essa etapa será pulada.
+# Após a instalação é necessário colocar o TeX Live no PATH, no geral isso envolve colocar as seguintes linhas no .profile (parece estar caindo em desuso) ou no .bash_profile:
+#export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
+#export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
+#export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
+# No meu caso, como já estão nos meus dotfiles, essa etapa será pulada.
 
 
 # configurações do DE =====================================
