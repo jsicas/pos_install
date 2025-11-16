@@ -25,7 +25,7 @@ dnf_install=(
 	https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm  # Nonfree
 	
 	# gerais
-    gnome-tweaks code
+    gnome-tweaks code rclone
 	htop btop fastfetch # utilitário de sistema
     fira-code-fonts     # fontes
     libxcrypt-compat    # se não instalar da problema com as referência no LaTeX   
