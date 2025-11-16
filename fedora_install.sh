@@ -44,6 +44,8 @@ flat_install=(
 
 echo 'instalando aplicativos (dnf)...'
 sudo dnf install -yq ${dnf_install[@]}
+# alterando editor padrão de nano para vim, para isso é necessária a tag --allowerasing já que ele vai conflitar com o nano
+sudo dnf install -yq --allowerasing vim-default-editor
 
 echo 'instalando aplicativos (flatpak)...'
 flatpak install -y flathub ${flat_install[@]}
