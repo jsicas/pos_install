@@ -18,18 +18,18 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 
 
 # instalações =============================================
-# dnf e flatpak ---------------------
+# pacotes para instalação -----------
 dnf_install=(
 	# RPM Fusion Freen e Nonfree
 	https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm        # Free
 	https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm  # Nonfree
 	
 	# gerais
-    gnome-tweaks
-    code
+    gnome-tweaks code
 	htop btop fastfetch # utilitário de sistema
     fira-code-fonts     # fontes
-    
+    libxcrypt-compat    # se não instalar da problema com as referência no LaTeX   
+
     # R e pacotes 
     R libcurl-devel openssl-devel libxml2-devel fontconfig-devel harfbuzz-devel fribidi-devel
     freetype-devel libpng-devel libtiff-devel libjpeg-devel libwebp-devel v8-devel
@@ -42,8 +42,10 @@ flat_install=(
     com.mattjakeman.ExtensionManager
 )
 
-echo 'instalando aplicativos...'
+echo 'instalando aplicativos (dnf)...'
 sudo dnf install -yq ${dnf_install[@]}
+
+echo 'instalando aplicativos (flatpak)...'
 flatpak install -y flathub ${flat_install[@]}
 
 
@@ -52,20 +54,6 @@ flatpak install -y flathub ${flat_install[@]}
 echo 'Instalando Rstudio...'
 wget -O rstudio.rpm https://download1.rstudio.org/electron/rhel9/x86_64/rstudio-2025.09.1-401-x86_64.rpm
 sudo dnf install -y ./rstudio.rpm
-
-# TeX Live
-echo 'Removendo TeX Live padrão...'
-sudo dnf remove -y texlive*
-echo 'Instalando TeX Live...'
-wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-zcat < install-tl-unx.tar.gz | tar xf -
-cd install-tl-2*
-perl ./install-tl -profile ../texlive.profile
-# Após a instalação é necessário colocar o TeX Live no PATH, no geral isso envolve colocar as seguintes linhas no .profile (parece estar caindo em desuso) ou no .bash_profile:
-#export PATH="$HOME/.texlive/2025/bin/x86_64-linux:$PATH"
-#export MANPATH="$HOME/.texlive/2025/texmf-dist/doc/man:$MANPATH"
-#export INFOPATH="$HOME/.texlive/2025/texmf-dist/doc/info:$INFOPATH"
-# No meu caso, como já estão nos meus dotfiles, essa etapa será pulada.
 
 
 # configurações do DE =====================================
@@ -90,6 +78,30 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
 echo 'Baixando configurações (dotfiles)...'
 git clone https://github.com/jsicas/dotfiles.git ~/.dotfiles
 bash ~/.dotfiles/mk_config.sh
+
+
+# TeX Live ================================================
+echo 'Removendo TeX Live padrão...'
+sudo dnf remove -y texlive*
+echo 'Instalando TeX Live...'
+wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+zcat < install-tl-unx.tar.gz | tar xf -
+cd install-tl-2*
+perl ./install-tl -profile ../texlive.profile
+# Após a instalação é necessário colocar o TeX Live no PATH, no geral isso envolve colocar as seguintes linhas no .profile (parece estar caindo em desuso) ou no .bash_profile:
+#export PATH="$HOME/.texlive/2025/bin/x86_64-linux:$PATH"
+#export MANPATH="$HOME/.texlive/2025/texmf-dist/doc/man:$MANPATH"
+#export INFOPATH="$HOME/.texlive/2025/texmf-dist/doc/info:$INFOPATH"
+# No meu caso, como já estão nos meus dotfiles, essa etapa será pulada.
+
+source ~/.bash_profile  # aplicando configurações do PATH para tlmgr funcionar
+
+# instalando pacotes do LaTeX
+tlmgr_install=(
+    mathtools multirow float csquotes xypic algorithm2e ifoddpage relsize
+    caption appendix forest
+)
+tlmgr install ${tlmgr_install[@]}
 
 # finalizar instalando as extensões
 # - dash to panel: configurações da barra de tarefas;
