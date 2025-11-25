@@ -58,7 +58,7 @@ wget -O rstudio.rpm https://download1.rstudio.org/electron/rhel9/x86_64/rstudio-
 sudo dnf install -y ./rstudio.rpm
 
 # Starship
-echo 'Instalando Starship'
+echo 'Instalando Starship...'
 dnf copr enable atim/starship
 dnf install starship
 # Após a instalação é necessário colocar em .bashrc:
