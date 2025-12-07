@@ -24,8 +24,8 @@ dnf_install=(
     https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm  # Nonfree
 	
     # gerais
-    gnome-tweaks code neovim
-    htop btop fastfetch rclone git # utilitário do terminal
+    gnome-tweaks code
+    htop btop fastfetch neovim rclone git # utilitário do terminal
     fira-code-fonts     # fontes
     libxcrypt-compat    # necessário para referências no LaTeX com biblatex
 
