@@ -115,6 +115,7 @@ tlmgr install ${tlmgr_install[@]}
 
 # finalizar instalando as extensões
 # - dash to panel: configurações da barra de tarefas;
+# - Color Picker: lupa para captura de cor;
 # - search light: laucher de apps;
 # - AppIndicator and KStatusNotifierItem Support: habilita suporte à indicadores na barra de tarefas;
 # - Disable unredirect fullscreen windows: resolve problema de tearing em janelas que utilizam aceleração de hardware
