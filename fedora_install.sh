@@ -1,7 +1,6 @@
 #!/usr/bin/env bash 
 
 # script para automatizar a pós instalação do Fedora Workstation 42 com Gnome.
-
 echo '========== Iniciando Pós-Intalação =========='
 
 # configurações
@@ -9,10 +8,10 @@ set -e           # exit on error
 cd $(mktemp -d)  # vai para um diretório temporário
 
 # atualizando apps e repositórios
-sudo dnf upgrade
+sudo dnf -y upgrade
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo  # habilita flatpak (se preciso)
 
-# para o VScode
+# para o VSCode
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
 
@@ -25,7 +24,7 @@ dnf_install=(
     https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm  # Nonfree
 	
     # gerais
-    gnome-tweaks code 
+    gnome-tweaks code neovim
     htop btop fastfetch rclone git # utilitário do terminal
     fira-code-fonts     # fontes
     libxcrypt-compat    # necessário para referências no LaTeX com biblatex
@@ -34,9 +33,6 @@ dnf_install=(
     R libcurl-devel openssl-devel libxml2-devel fontconfig-devel harfbuzz-devel fribidi-devel
     freetype-devel libpng-devel libtiff-devel libjpeg-devel libwebp-devel v8-devel
     gdal-devel proj-devel geos-devel sqlite-devel udunits2 udunits2-devel abseil-cpp-devel
-
-    # NeoVim (dependências)
-    gcc make ripgrep fd-find unzip neovim
 )
 
 flat_install=(
@@ -67,10 +63,6 @@ dnf install starship
 # Após a instalação é necessário colocar em .bashrc:
 #eval "$(starship init bash)"
 # Como já fiz nos meus dotfiles, pulei essa etapa.
-
-# kickstart.nvim
-echo 'Instalando kickstart.nvim...'
-git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 
 
 # configurações do DE =====================================
