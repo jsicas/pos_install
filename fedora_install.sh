@@ -68,8 +68,13 @@ dnf install starship
 #eval "$(starship init bash)"
 # Como já fiz nos meus dotfiles, pulei essa etapa.
 
+# kickstart.nvim
+echo 'Instalando kickstart.nvim...'
+git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+
 
 # configurações do DE =====================================
+echo 'Aplicando configurações no Desktop Enviroment...'
 gsettings set org.gnome.desktop.interface clock-format '24h'
 gsettings set org.gnome.desktop.session idle-delay 600  # tempo para desligamento de tela por inatividade
 
@@ -88,7 +93,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
 
 
 # dotfiles ================================================
-echo 'Baixando configurações (dotfiles)...'
+echo 'Baixando e aplicando dotfiles...'
 git clone https://github.com/jsicas/dotfiles.git ~/.dotfiles
 bash ~/.dotfiles/mk_config.sh
 
@@ -115,6 +120,8 @@ tlmgr_install=(
     caption appendix forest
 )
 tlmgr install ${tlmgr_install[@]}
+
+echo 'Fim da pós instalação.'
 
 # finalizar instalando as extensões
 # - dash to panel: configurações da barra de tarefas;
