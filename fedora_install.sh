@@ -20,20 +20,23 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 # instalações =============================================
 # pacotes para instalação -----------
 dnf_install=(
-	# RPM Fusion Freen e Nonfree
-	https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm        # Free
-	https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm  # Nonfree
+    # RPM Fusion Freen e Nonfree
+    https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm        # Free
+    https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm  # Nonfree
 	
-	# gerais
-    gnome-tweaks code rclone
-	htop btop fastfetch # utilitário de sistema
+    # gerais
+    gnome-tweaks code 
+    htop btop fastfetch rclone git # utilitário do terminal
     fira-code-fonts     # fontes
-    libxcrypt-compat    # se não instalar da problema com as referência no LaTeX   
+    libxcrypt-compat    # necessário para referências no LaTeX com biblatex
 
     # R e pacotes 
     R libcurl-devel openssl-devel libxml2-devel fontconfig-devel harfbuzz-devel fribidi-devel
     freetype-devel libpng-devel libtiff-devel libjpeg-devel libwebp-devel v8-devel
     gdal-devel proj-devel geos-devel sqlite-devel udunits2 udunits2-devel abseil-cpp-devel
+
+    # NeoVim (dependências)
+    gcc make ripgrep fd-find unzip neovim
 )
 
 flat_install=(
