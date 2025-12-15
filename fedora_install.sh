@@ -86,8 +86,9 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
 
 # dotfiles ================================================
 echo 'Baixando e aplicando dotfiles...'
-git clone https://github.com/jsicas/dotfiles.git ~/.dotfiles
-bash ~/.dotfiles/mk_config.sh
+git clone --bare https://github.com/jsicas/dotfiles.git $HOME/.dotfiles
+source $HOME/.bashrc  # carregando alias
+dotfile checkout -f   # aplica os dotfiles (-f sobrescreve arquivos)
 
 
 # TeX Live ================================================
@@ -98,7 +99,7 @@ wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 zcat < install-tl-unx.tar.gz | tar xf -
 cd install-tl-2*
 perl ./install-tl -profile ../texlive.profile
-# Após a instalação é necessário colocar o TeX Live no PATH, no geral isso envolve colocar as seguintes linhas no .profile (parece estar caindo em desuso) ou no .bash_profile:
+# Após a instalação é necessário colocar o TeX Live no PATH, no geral isso envolve colocar as seguintes linhas em .bash_profile:
 #export PATH="$HOME/.texlive/2025/bin/x86_64-linux:$PATH"
 #export MANPATH="$HOME/.texlive/2025/texmf-dist/doc/man:$MANPATH"
 #export INFOPATH="$HOME/.texlive/2025/texmf-dist/doc/info:$INFOPATH"
@@ -120,5 +121,5 @@ echo 'Fim da pós instalação.'
 # - Color Picker: lupa para captura de cor;
 # - Vicinae: laucher de apps, instalar manualmente seguindo https://docs.vicinae.com/install/script, além disso, é necessário ativar como um serviço do systemd ou início automático no login;
 # - AppIndicator and KStatusNotifierItem Support: habilita suporte à indicadores na barra de tarefas;
-# - Disable unredirect fullscreen windows: resolve problema de tearing em janelas que utilizam aceleração de hardware
+# - Disable unredirect fullscreen windows: resolve problema de tearing em janelas que utilizam aceleração de hardware;
 # - Steal my focus window: ao invés de aparecer uma notificação, simplesmente já abre a janela, sem precisar ter que selecionar o popup. 
