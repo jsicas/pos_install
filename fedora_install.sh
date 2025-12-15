@@ -105,7 +105,7 @@ perl ./install-tl -profile ../texlive.profile
 #export INFOPATH="$HOME/.texlive/2025/texmf-dist/doc/info:$INFOPATH"
 # No meu caso, como já estão nos meus dotfiles, essa etapa será pulada.
 
-source ~/.bash_profile  # aplicando configurações do PATH para tlmgr funcionar
+source $HOME/.bash_profile  # aplicando configurações do PATH para tlmgr funcionar
 
 # instalando pacotes do LaTeX
 tlmgr_install=(
