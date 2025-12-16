@@ -26,6 +26,7 @@ dnf_install=(
     # gerais
     gnome-tweaks code
     htop btop fastfetch neovim rclone git # utilitário do terminal
+	glycin-thumbnailer  # fix image thumbnails on nautilus
     fira-code-fonts     # fontes
     libxcrypt-compat    # necessário para referências no LaTeX com biblatex
 
