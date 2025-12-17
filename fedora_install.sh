@@ -59,8 +59,8 @@ sudo dnf install -y ./rstudio.rpm
 
 # Starship
 echo 'Instalando Starship...'
-dnf copr enable atim/starship
-dnf install starship
+sudo dnf copr enable atim/starship
+sudo dnf install starship
 # Após a instalação é necessário colocar em .bashrc:
 #eval "$(starship init bash)"
 # Como já fiz nos meus dotfiles, pulei essa etapa.
