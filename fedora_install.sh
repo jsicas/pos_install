@@ -6,6 +6,7 @@ echo '========== Iniciando Pós-Intalação =========='
 # configurações
 set -e           # exit on error
 cd $(mktemp -d)  # vai para um diretório temporário
+mkdir -p $HOME/{GitHub,.log,bin} $HOME/Desktop/mestrado
 
 # atualizando apps e repositórios
 sudo dnf -y upgrade
@@ -117,10 +118,13 @@ tlmgr install ${tlmgr_install[@]}
 
 echo 'Fim da pós instalação.'
 
-# finalizar instalando as extensões
+# Para finalizar a instalação:
+#### Extensões
 # - Dash to panel: configurações da barra de tarefas;
 # - Color Picker: lupa para captura de cor;
-# - Search light: laucher de apps;
+# - Search light ou Vicinae: laucher de apps;
 # - AppIndicator and KStatusNotifierItem Support: habilita suporte à indicadores na barra de tarefas;
 # - Disable unredirect fullscreen windows: resolve problema de tearing em janelas que utilizam aceleração de hardware;
 # - Steal my focus window: ao invés de aparecer uma notificação, simplesmente já abre a janela, sem precisar ter que selecionar o popup. 
+#### Cron
+#0 */2 * * * rclone bisync $HOME/Desktop/mestrado drive:Estudos/mestrado --fast-list --force --recover -v > $HOME/.log/rclone_mestrado.log 2>&1 || notify-send -i dialog-    warning "Erro" "Sincronização dos arquivos com o drive não ocorreu."
