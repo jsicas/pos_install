@@ -30,11 +30,13 @@ dnf_install=(
 	glycin-thumbnailer  # fix image thumbnails on nautilus
     fira-code-fonts     # fontes
     libxcrypt-compat    # necessário para referências no LaTeX com biblatex
+	ShellCheck
 
     # R e pacotes 
-    R libcurl-devel openssl-devel libxml2-devel fontconfig-devel harfbuzz-devel fribidi-devel
-    freetype-devel libpng-devel libtiff-devel libjpeg-devel libwebp-devel v8-devel
-    gdal-devel proj-devel geos-devel sqlite-devel udunits2 udunits2-devel abseil-cpp-devel
+    R
+    #libcurl-devel openssl-devel libxml2-devel fontconfig-devel harfbuzz-devel fribidi-devel
+    #freetype-devel libpng-devel libtiff-devel libjpeg-devel libwebp-devel v8-devel
+    #gdal-devel proj-devel geos-devel sqlite-devel udunits2 udunits2-devel abseil-cpp-devel
 )
 
 flat_install=(
